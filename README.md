@@ -162,6 +162,13 @@ A melhor forma para promover uma mudança é criando uma [Issue aqui](https://gi
 
 ## CHANGELOG
 
+### 2023-01-21 - v3.0.0 - Atualização do frontend para Vue 3
+
+- [frontend] Usando Vue 3 + Vite para um ambiente dev muito mais rápido
+- [frontend] Usando Vuetify 3
+- [frontend] Atualizado Linter para utilizar ESLint + Prettier
+- [frontend] Atualizado para utilizar Pinia como gerenciador de estado
+
 ### 2022-12-17 - v2.1.0 - Melhoria na qualidade do codigo
 
 - [frontend] snackbar centralizado (via service bus)
