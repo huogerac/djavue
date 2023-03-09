@@ -1,6 +1,6 @@
-from app1.accounts.models import User
-from app1.accounts.tests import fixtures
-from app1.tasks.models import Todo
+from {{name}}.accounts.models import User
+from {{name}}.accounts.tests import fixtures
+from {{name}}.tasks.models import Todo
 
 
 def test_criar_tarefa_sem_login(client):

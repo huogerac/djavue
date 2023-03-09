@@ -1,4 +1,4 @@
-from app1.tasks.models import User
+from {{name}}.tasks.models import User
 
 
 def user_jon():
