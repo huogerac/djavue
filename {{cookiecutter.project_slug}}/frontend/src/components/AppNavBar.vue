@@ -26,7 +26,7 @@ export default {
     title: {
       type: String,
       required: false,
-      default: "MyApp",
+      default: "{{cookiecutter.project_name}}",
     },
     theme: {
       type: String,

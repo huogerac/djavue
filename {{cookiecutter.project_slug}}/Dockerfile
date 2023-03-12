@@ -1,16 +1,16 @@
-FROM python:3.9-slim
+FROM python:{{cookiecutter.python_version}}-slim
 
 WORKDIR /app
 
 # Install basic SO and Python
 RUN apt-get update --fix-missing \
-	&& apt-get install -y --no-install-recommends \
-		build-essential \
-		libpq-dev \
-		python-dev \
-        wget curl vim locales zip unzip apt-utils \
-		wait-for-it \
-	&& rm -rf /var/lib/apt/lists/* \
+    && apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    python-dev \
+    wget curl vim locales zip unzip apt-utils \
+    wait-for-it \
+    && rm -rf /var/lib/apt/lists/* \
     && pip install uwsgi uwsgitop
 
 # Replace shell with bash so we can source files

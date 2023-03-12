@@ -2,10 +2,10 @@ import api from "./config.js"
 import apiHelpers from "./helpers.js"
 
 export default {
-  getTasks: () => {
+  get{{ cookiecutter.model }}: () => {
     return new Promise((resolve, reject) => {
       api
-        .get("/api/tasks/list")
+        .get("/api/{{ cookiecutter.model_lower }}/list")
         .then((response) => {
           return resolve(response.data)
         })
@@ -14,10 +14,10 @@ export default {
         })
     })
   },
-  addNewTask: (description) => {
+  addNew{{cookiecutter.model_singular}}: (description) => {
     return new Promise((resolve, reject) => {
       api
-        .post("/api/tasks/add", apiHelpers.dataToForm({ description }))
+        .post("/api/{{ cookiecutter.model_lower }}/add", apiHelpers.dataToForm({ description }))
         .then((response) => {
           return resolve(response.data)
         })

@@ -60,10 +60,10 @@
             rel="noopener noreferrer"
             size="x-large"
             variant="flat"
-            :to="{ name: 'tasks-list' }"
+            :to="{ name: '{{ cookiecutter.model_lower }}-list' }"
             class="my-4">
             <v-icon icon="mdi-folder-star-multiple" size="large" start />
-            tarefas
+            {{cookiecutter.model_lower}}
           </v-btn>
         </v-col>
       </v-row>

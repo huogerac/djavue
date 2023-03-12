@@ -55,7 +55,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "{{cookiecutter.project_slug}}.base",
     "{{cookiecutter.project_slug}}.accounts",
-    "{{cookiecutter.project_slug}}.tasks",
+    "{{cookiecutter.project_slug}}.{{ cookiecutter.app_name }}",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

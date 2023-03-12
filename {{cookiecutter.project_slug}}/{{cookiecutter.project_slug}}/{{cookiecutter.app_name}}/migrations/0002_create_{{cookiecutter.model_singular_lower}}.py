@@ -8,12 +8,12 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("tasks", "0001_initial"),
+        ("{{ cookiecutter.app_name }}", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Todo",
+            name="{{cookiecutter.model_singular}}",
             fields=[
                 (
                     "id",

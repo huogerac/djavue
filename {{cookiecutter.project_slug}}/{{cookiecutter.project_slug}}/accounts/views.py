@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 
-from ..tasks.service import log_svc
+from ..{{ cookiecutter.app_name }}.service import log_svc
 
 
 @csrf_exempt

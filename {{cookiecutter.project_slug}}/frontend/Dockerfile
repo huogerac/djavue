@@ -1,4 +1,4 @@
-FROM node:16.17-slim
+FROM node:{{cookiecutter.node_version}}-slim
 
 WORKDIR /frontend
 

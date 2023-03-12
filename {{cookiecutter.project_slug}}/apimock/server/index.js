@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 
 const base = require("./controllers/base");
 const accounts = require("./controllers/accounts");
-const tasks = require("./controllers/tasks");
+const {{ cookiecutter.model_lower }} = require("./controllers/{{ cookiecutter.model_lower }}");
 
 const YELLOW = "\x1b[33m%s\x1b[0m";
 const WHITE = "\x1b[37m";
@@ -32,9 +32,9 @@ app.post("/api/accounts/login", accounts.login);
 app.post("/api/accounts/logout", accounts.logout);
 app.get("/api/accounts/whoami", accounts.whoami);
 
-// TASKS
-app.get("/api/tasks/list", tasks.find);
-app.post("/api/tasks/add", tasks.add);
+// {{ cookiecutter.model }}
+app.get("/api/{{ cookiecutter.model_lower }}/list", {{ cookiecutter.model_lower }}.find);
+app.post("/api/{{ cookiecutter.model_lower }}/add", {{ cookiecutter.model_lower }}.add);
 
 app.listen(PORT, () => {
   console.log(

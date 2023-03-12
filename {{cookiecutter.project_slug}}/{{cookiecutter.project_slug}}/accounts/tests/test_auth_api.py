@@ -1,3 +1,5 @@
+from unittest.mock import ANY
+
 from {{cookiecutter.project_slug}}.accounts.models import User
 from . import fixtures
 
@@ -19,7 +21,7 @@ def test_deve_retornar_usuario_logado(client, db):
     assert resp.status_code == 200
     assert data == {
         'user': {
-            'id': 1, 'name': 'Jon Snow', 'username': 'jon', 'first_name': 'Jon', 'last_name': 'Snow', 'email': 'jon@example.com',
+            'id': ANY, 'name': 'Jon Snow', 'username': 'jon', 'first_name': 'Jon', 'last_name': 'Snow', 'email': 'jon@example.com',
             'permissions': {
                 'ADMIN': False, 'STAFF': False
             }
@@ -39,7 +41,7 @@ def test_deve_fazer_login(client, db):
     assert resp.status_code == 200
     assert data == {
         'user': {
-            'id': 2, 'name': 'Jon Snow', 'username': 'jon', 'first_name': 'Jon', 'last_name': 'Snow', 'email': 'jon@example.com',
+            'id': ANY, 'name': 'Jon Snow', 'username': 'jon', 'first_name': 'Jon', 'last_name': 'Snow', 'email': 'jon@example.com',
             'permissions': {
                 'ADMIN': False, 'STAFF': False
             }

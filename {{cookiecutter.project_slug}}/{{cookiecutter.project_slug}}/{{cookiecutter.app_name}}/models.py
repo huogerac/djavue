@@ -20,7 +20,7 @@ class ActivityLog(models.Model):
         )
 
 
-class Todo(models.Model):
+class {{cookiecutter.model_singular}}(models.Model):
     description = models.CharField(max_length=512)
     done = models.BooleanField(default=False)
 

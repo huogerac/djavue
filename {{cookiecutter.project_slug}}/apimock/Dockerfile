@@ -1,4 +1,4 @@
-FROM node:14.20-slim
+FROM node:{{cookiecutter.node_version}}-slim
 
 WORKDIR /apimock
 

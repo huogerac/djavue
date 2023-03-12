@@ -5,7 +5,7 @@ sqlparse==0.4.2
 tzdata==2022.1
 
 # 3rd
-django-sql-explorer==2.4.2
+# django-sql-explorer==2.4.2
 
 # DB
 psycopg2==2.9.3

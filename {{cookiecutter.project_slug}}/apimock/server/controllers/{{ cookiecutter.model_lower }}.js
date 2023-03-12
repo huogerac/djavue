@@ -13,16 +13,16 @@ module.exports = {
     }
     const { id } = req.params;
     if (id != undefined) {
-      const task = data.tasks.find((t) => t.id == id);
-      if (!task || task.userId != loggedUser.id) {
+      const {{cookiecutter.model_singular_lower}} = data.{{ cookiecutter.model_lower }}.find((t) => t.id == id);
+      if (!{{cookiecutter.model_singular_lower}} || {{cookiecutter.model_singular_lower}}.userId != loggedUser.id) {
         res.status(404).end();
         return;
       }
-      res.send(task);
+      res.send({{cookiecutter.model_singular_lower}});
       return;
     }
     const response = {
-      todos: data.tasks.filter((t) => t.userId == loggedUser.id),
+      {{cookiecutter.model_lower}}: data.{{ cookiecutter.model_lower }}.filter((t) => t.userId == loggedUser.id),
     };
     res.send(response);
   },
@@ -32,13 +32,13 @@ module.exports = {
       return;
     }
     const { description } = req.body;
-    const id = getMaxId(data.tasks) + 1;
-    const newTask = {
+    const id = getMaxId(data.{{ cookiecutter.model_lower }}) + 1;
+    const new{{cookiecutter.model_singular}} = {
       id,
       description,
       userId: loggedUser.id,
     };
-    data.tasks.push(newTask);
-    res.send(newTask);
+    data.{{ cookiecutter.model_lower }}.push(new{{cookiecutter.model_singular}});
+    res.send(new{{cookiecutter.model_singular}});
   },
 };

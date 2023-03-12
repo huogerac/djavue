@@ -1,4 +1,4 @@
-from {{cookiecutter.project_slug}}.tasks.models import User
+from {{cookiecutter.project_slug}}.{{ cookiecutter.app_name }}.models import User
 
 
 def user_jon():

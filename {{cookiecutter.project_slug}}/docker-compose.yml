@@ -21,7 +21,7 @@ services:
         condition: service_healthy
 
   postgres:
-    image: "postgres:13.3-alpine"
+    image: "{{cookiecutter.postgresql_version}}"
     ports:
       - 15432:5432
     volumes:

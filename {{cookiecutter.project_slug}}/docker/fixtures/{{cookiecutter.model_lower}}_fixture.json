@@ -1,17 +1,17 @@
 [
   {
-    "model": "core.todo",
+    "model": "{{cookiecutter.app_name}}.{{cookiecutter.model}}",
     "pk": 1,
     "fields": {
-      "description": "Tarefa 1",
+      "description": "{{cookiecutter.model_singular}} 1",
       "done": false
     }
   },
   {
-    "model": "core.todo",
+    "model": "{{cookiecutter.app_name}}.{{cookiecutter.model}}",
     "pk": 2,
     "fields": {
-      "description": "Tarefa 2",
+      "description": "{{cookiecutter.model_singular}} 2",
       "done": false
     }
   },

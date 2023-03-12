@@ -8,7 +8,7 @@
           required
           outlined
           append-icon="fa-pen"
-          @keyup.enter="addNewTask" />
+          @keyup.enter="addNew{{cookiecutter.model_singular}}" />
       </v-card-text>
     </v-card>
   </div>
@@ -22,15 +22,15 @@ export default {
       default: "",
     },
   },
-  emits: ["newTask"],
+  emits: ["new{{cookiecutter.model_singular}}"],
   data: () => {
     return {
       title: "",
     }
   },
   methods: {
-    addNewTask() {
-      this.$emit("newTask", {
+    addNew{{cookiecutter.model_singular}}() {
+      this.$emit("new{{cookiecutter.model_singular}}", {
         title: this.title,
       })
       this.title = ""
