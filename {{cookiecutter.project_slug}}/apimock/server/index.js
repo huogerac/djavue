@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 
 const base = require("./controllers/base");
 const accounts = require("./controllers/accounts");
-const {{ cookiecutter.main_app }} = require("./controllers/{{ cookiecutter.model_lower }}");
+const {{ cookiecutter.app_name }} = require("./controllers/{{ cookiecutter.app_name }}");
 
 const YELLOW = "\x1b[33m%s\x1b[0m";
 const WHITE = "\x1b[37m";
@@ -33,8 +33,8 @@ app.post("/api/accounts/logout", accounts.logout);
 app.get("/api/accounts/whoami", accounts.whoami);
 
 // {{ cookiecutter.model }}
-app.get("/api/{{cookiecutter.main_app}}/{{ cookiecutter.model_lower }}/list", {{ cookiecutter.model_lower }}.find);
-app.post("/api/{{cookiecutter.main_app}}/{{ cookiecutter.model_lower }}/add", {{ cookiecutter.model_lower }}.add);
+app.get("/api/{{cookiecutter.app_name}}/{{ cookiecutter.model_lower }}/list", {{ cookiecutter.app_name }}.find);
+app.post("/api/{{cookiecutter.app_name}}/{{ cookiecutter.model_lower }}/add", {{ cookiecutter.app_name }}.add);
 
 app.listen(PORT, () => {
   console.log(

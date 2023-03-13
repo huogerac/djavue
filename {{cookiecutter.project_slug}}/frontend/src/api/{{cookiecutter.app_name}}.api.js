@@ -5,7 +5,7 @@ export default {
   get{{ cookiecutter.model }}: () => {
     return new Promise((resolve, reject) => {
       api
-        .get("/api/{{ cookiecutter.main_app }}/{{ cookiecutter.model_lower }}/list")
+        .get("/api/{{ cookiecutter.app_name }}/{{ cookiecutter.model_lower }}/list")
         .then((response) => {
           return resolve(response.data)
         })
@@ -17,7 +17,7 @@ export default {
   addNew{{cookiecutter.model_singular}}: (description) => {
     return new Promise((resolve, reject) => {
       api
-        .post("/api/{{ cookiecutter.main_app }}/{{ cookiecutter.model_lower }}/add", apiHelpers.dataToForm({ description }))
+        .post("/api/{{ cookiecutter.app_name }}/{{ cookiecutter.model_lower }}/add", apiHelpers.dataToForm({ description }))
         .then((response) => {
           return resolve(response.data)
         })
