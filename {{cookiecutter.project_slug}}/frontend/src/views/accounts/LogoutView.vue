@@ -28,14 +28,14 @@
 
 <script>
 import AccountsApi from "@/api/accounts.api.js"
-import { useAppStore } from "@/stores/appStore"
+import { useBaseStore } from "@/stores/baseStore"
 import { useAccountsStore } from "@/stores/accountsStore"
 
 export default {
   setup() {
-    const appStore = useAppStore()
+    const baseStore = useBaseStore()
     const accountsStore = useAccountsStore()
-    return { appStore, accountsStore }
+    return { baseStore, accountsStore }
   },
   data: () => {
     return {
@@ -48,7 +48,7 @@ export default {
       AccountsApi.logout()
         .then(() => {
           this.accountsStore.clearLoggedUser()
-          this.appStore.showSnackbar("Sessão encerrada!", "warning")
+          this.baseStore.showSnackbar("Sessão encerrada!", "warning")
           this.$router.push({ name: "base-home" })
         })
         .finally(() => {

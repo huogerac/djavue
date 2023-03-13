@@ -13,7 +13,7 @@
 
 <script>
 import { mapState } from "pinia"
-import { useAppStore } from "@/stores/appStore"
+import { useBaseStore } from "@/stores/baseStore"
 import { useAccountsStore } from "@/stores/accountsStore"
 import AppSnackbar from "@/components/AppSnackbar.vue"
 import AppErrorDialog from "@/components/AppErrorDialog.vue"
@@ -27,16 +27,16 @@ export default {
     AppFooter,
   },
   setup() {
-    const appStore = useAppStore()
-    return { appStore }
+    const baseStore = useBaseStore()
+    return { baseStore }
   },
   computed: {
-    ...mapState(useAppStore, ["errorMessage", "showErrorMessage"]),
+    ...mapState(useBaseStore, ["errorMessage", "showErrorMessage"]),
     ...mapState(useAccountsStore, ["loggedUser"]),
   },
   methods: {
     closeErrorDialog() {
-      this.appStore.setShowErrorMessage(null)
+      this.baseStore.setShowErrorMessage(null)
     },
   },
 }

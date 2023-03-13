@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { useAppStore } from "@/stores/appStore"
+import { useBaseStore } from "@/stores/baseStore"
 import {{ cookiecutter.main_app }}Api from "@/api/{{ cookiecutter.main_app }}.api.js"
 import {{cookiecutter.model_singular}} from "@/components/{{cookiecutter.model_singular}}.vue"
 import {{cookiecutter.model_singular}}Form from "@/components/{{cookiecutter.model_singular}}Form.vue"
@@ -28,8 +28,8 @@ export default {
   name: "{{ cookiecutter.model }}List",
   components: { {{cookiecutter.model_singular}}, {{cookiecutter.model_singular}}Form },
   setup() {
-    const appStore = useAppStore()
-    return { appStore }
+    const baseStore = useBaseStore()
+    return { baseStore }
   },
   data() {
     return {
@@ -51,7 +51,7 @@ export default {
     addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}) {
       this.loading = true
       {{ cookiecutter.main_app }}Api.addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}.title).then(({{cookiecutter.model_singular_lower}}) => {
-        this.appStore.showSnackbar(`New {{cookiecutter.model_singular_lower}} added #${ {{cookiecutter.model_singular_lower}}.id }`)
+        this.baseStore.showSnackbar(`New {{cookiecutter.model_singular_lower}} added #${ {{cookiecutter.model_singular_lower}}.id }`)
         this.get{{ cookiecutter.model }}()
         this.loading = false
         console.log("oi")

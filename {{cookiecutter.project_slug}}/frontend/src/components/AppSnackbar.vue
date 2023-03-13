@@ -12,21 +12,21 @@
 
 <script>
 import { mapState } from "pinia"
-import { useAppStore } from "@/stores/appStore"
+import { useBaseStore } from "@/stores/baseStore"
 
 export default {
   setup() {
-    const appStore = useAppStore()
-    return { appStore }
+    const baseStore = useBaseStore()
+    return { baseStore }
   },
   computed: {
-    ...mapState(useAppStore, ["snackbarMessage", "type", "showSnackbarMessage"]),
+    ...mapState(useBaseStore, ["snackbarMessage", "type", "showSnackbarMessage"]),
     showSnackbar: {
       get() {
         return this.showSnackbarMessage
       },
       set(value) {
-        this.appStore.showSnackbar(value)
+        this.baseStore.showSnackbar(value)
       },
     },
     snackbarCollors() {

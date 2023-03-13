@@ -49,14 +49,14 @@
 <script>
 import { mapState } from "pinia"
 import AccountsApi from "@/api/accounts.api.js"
-import { useAppStore } from "@/stores/appStore"
+import { useBaseStore } from "@/stores/baseStore"
 import { useAccountsStore } from "@/stores/accountsStore"
 
 export default {
   setup() {
-    const appStore = useAppStore()
+    const baseStore = useBaseStore()
     const accountsStore = useAccountsStore()
-    return { appStore, accountsStore }
+    return { baseStore, accountsStore }
   },
   data: () => {
     return {
@@ -76,7 +76,7 @@ export default {
     AccountsApi.whoami().then((response) => {
       if (response.authenticated) {
         this.saveLoggedUser(response.user)
-        this.appStore.showSnackbar("Usuário já logado", "warning")
+        this.baseStore.showSnackbar("Usuário já logado", "warning")
         this.show{{ cookiecutter.model }}()
       }
     })
@@ -87,7 +87,7 @@ export default {
       AccountsApi.login(this.username, this.password)
         .then((response) => {
           if (!response) {
-            this.appStore.showSnackbar("Usuário ou senha invalida", "danger")
+            this.baseStore.showSnackbar("Usuário ou senha invalida", "danger")
             return
           }
           this.saveLoggedUser(response.user)

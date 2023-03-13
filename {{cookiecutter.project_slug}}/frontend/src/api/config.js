@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { useAppStore } from "@/stores/appStore"
+import { useBaseStore } from "@/stores/baseStore"
 import router from "../router"
 
 const api = axios.create({
@@ -16,14 +16,14 @@ export function responseSuccess(response) {
 
 export function responseError(error) {
   // Redireciona falha na comunicação com o BACKEND para página 500
-  const appStore = useAppStore()
+  const baseStore = useBaseStore()
   if (!error.response && error.message === "Network Error") {
-    appStore.setShowErrorMessage(error.message)
+    baseStore.setShowErrorMessage(error.message)
   }
 
   // Redireciona erro de autênticação para página de login
   if (error.response && error.response.status === 401) {
-    appStore.showSnackbar("Usuário sem autênticação. Efetue o login!", "warning")
+    baseStore.showSnackbar("Usuário sem autênticação. Efetue o login!", "warning")
     router.push({
       name: "accounts-login",
     })

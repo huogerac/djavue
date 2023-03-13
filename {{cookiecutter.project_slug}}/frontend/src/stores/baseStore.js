@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 
-export const useAppStore = defineStore("appStore", {
+export const useBaseStore = defineStore("baseStore", {
   state: () => ({
     errorMessage: undefined,
     showErrorMessage: false,
