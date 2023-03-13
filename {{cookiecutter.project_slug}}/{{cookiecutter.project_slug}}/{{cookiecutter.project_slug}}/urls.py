@@ -22,7 +22,7 @@ urlpatterns = [
     path("api/", include("{{cookiecutter.project_slug}}.base.urls")),
     path("api/accounts/", include("{{cookiecutter.project_slug}}.accounts.urls")),
     path(
-        "api/{{ cookiecutter.model_lower }}/",
+        "api/{{ cookiecutter.main_app }}/",
         include("{{cookiecutter.project_slug}}.{{ cookiecutter.app_name }}.urls"),
     ),
 ]

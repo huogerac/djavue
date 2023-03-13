@@ -20,7 +20,7 @@
 
 <script>
 import { useAppStore } from "@/stores/appStore"
-import {{ cookiecutter.model }}Api from "@/api/{{ cookiecutter.model_lower }}.api.js"
+import {{ cookiecutter.main_app }}Api from "@/api/{{ cookiecutter.main_app }}.api.js"
 import {{cookiecutter.model_singular}} from "@/components/{{cookiecutter.model_singular}}.vue"
 import {{cookiecutter.model_singular}}Form from "@/components/{{cookiecutter.model_singular}}Form.vue"
 
@@ -43,14 +43,14 @@ export default {
   methods: {
     get{{ cookiecutter.model }}() {
       this.loading = true
-      {{ cookiecutter.model }}Api.get{{ cookiecutter.model }}().then((data) => {
+      {{ cookiecutter.main_app }}Api.get{{ cookiecutter.model }}().then((data) => {
         this.items = data.{{cookiecutter.model_lower}}
         this.loading = false
       })
     },
     addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}) {
       this.loading = true
-      {{ cookiecutter.model }}Api.addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}.title).then(({{cookiecutter.model_singular_lower}}) => {
+      {{ cookiecutter.main_app }}Api.addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}.title).then(({{cookiecutter.model_singular_lower}}) => {
         this.appStore.showSnackbar(`New {{cookiecutter.model_singular_lower}} added #${ {{cookiecutter.model_singular_lower}}.id }`)
         this.get{{ cookiecutter.model }}()
         this.loading = false

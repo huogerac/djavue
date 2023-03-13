@@ -1,6 +1,6 @@
 // Composables
 import DefaultLayout from "@/layouts/default/DefaultLayout.vue"
-import {{cookiecutter.model_singular}}ListView from "@/views/{{ cookiecutter.model_lower }}/{{cookiecutter.model_singular}}ListView.vue"
+import {{cookiecutter.model_singular}}ListView from "@/views/{{ cookiecutter.main_app }}/{{cookiecutter.model_singular}}ListView.vue"
 
 export default [
   {
