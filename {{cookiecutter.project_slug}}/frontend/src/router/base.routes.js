@@ -1,7 +1,7 @@
 // Composables
 import EmptyLayout from "@/layouts/default/EmptyLayout.vue"
-import HomeView from "@/views/base/HomeView.vue"
-import GetStartedView from "@/views/base/GetStartedView.vue"
+import HomeView from "@/{{cookiecutter.pages_folder_name}}/base/HomeView.vue"
+import GetStartedView from "@/{{cookiecutter.pages_folder_name}}/base/GetStartedView.vue"
 
 export default [
   {

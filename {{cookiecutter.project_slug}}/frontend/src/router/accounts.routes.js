@@ -1,7 +1,7 @@
 // Composables
 import EmptyLayout from "@/layouts/default/EmptyLayout.vue"
-import LoginView from "@/views/accounts/LoginView.vue"
-import LogoutView from "@/views/accounts/LogoutView.vue"
+import LoginView from "@/{{cookiecutter.pages_folder_name}}/accounts/LoginView.vue"
+import LogoutView from "@/{{cookiecutter.pages_folder_name}}/accounts/LogoutView.vue"
 
 export default [
   {

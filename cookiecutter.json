@@ -16,6 +16,7 @@
     "sqlite3"
   ],
   "node_version": ["16.17"],
+  "pages_folder_name": ["views", "pages"],
   "api_mock": ["express", "mirage JS"],
   "use_github_actions_CI": "yes",
   "keep_vscode_settings": "yes",
