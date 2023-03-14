@@ -34,10 +34,8 @@ module.exports = {
         return;
       }
       user.sessionid = crypto.randomUUID();
-      res.cookie("sessionid", user.sessionid, { httpOnly: true }).send({
-        user: user,
-        authenticated: true,
-      });
+      res.cookie("sessionid", user.sessionid, { httpOnly: true });
+      res.send({ ...user });
     });
   },
   whoami: (req, res) => {

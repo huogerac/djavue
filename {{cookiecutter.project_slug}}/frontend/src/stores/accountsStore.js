@@ -23,7 +23,7 @@ export const useAccountsStore = defineStore("accountsStore", {
       if (!response) {
         return
       }
-      this.loggedUser = response.user
+      this.loggedUser = response
       return this.loggedUser
     },
     async logout() {
