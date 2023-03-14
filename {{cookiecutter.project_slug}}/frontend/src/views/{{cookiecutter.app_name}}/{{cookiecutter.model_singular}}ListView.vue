@@ -11,7 +11,7 @@
         <{{cookiecutter.model_singular_lower}}-form :form-label="'New {{cookiecutter.model_singular}}'" @new-{{cookiecutter.model_singular_lower}}="addNew{{cookiecutter.model_singular}}" />
       </v-col>
 
-      <v-col v-for="item in items" :key="item.id" cols="12">
+      <v-col v-for="item in {{cookiecutter.model_lower}}" :key="item.id" cols="12">
         <{{cookiecutter.model_singular_lower}} :{{cookiecutter.model_singular_lower}}="item" />
       </v-col>
     </v-row>
@@ -19,8 +19,9 @@
 </template>
 
 <script>
+import { mapState } from "pinia"
 import { useBaseStore } from "@/stores/baseStore"
-import {{ cookiecutter.app_name }}Api from "@/api/{{ cookiecutter.app_name }}.api.js"
+import { use{{ cookiecutter.app_name }}Store } from "@/stores/{{ cookiecutter.app_name }}Store"
 import {{cookiecutter.model_singular}} from "@/components/{{cookiecutter.model_singular}}.vue"
 import {{cookiecutter.model_singular}}Form from "@/components/{{cookiecutter.model_singular}}Form.vue"
 
@@ -29,33 +30,23 @@ export default {
   components: { {{cookiecutter.model_singular}}, {{cookiecutter.model_singular}}Form },
   setup() {
     const baseStore = useBaseStore()
-    return { baseStore }
+    const {{ cookiecutter.app_name }}Store = use{{ cookiecutter.app_name }}Store()
+    return { baseStore, {{ cookiecutter.app_name }}Store }
   },
-  data() {
-    return {
-      loading: false,
-      items: [],
-    }
+  computed: {
+    ...mapState(use{{ cookiecutter.app_name }}Store, ["{{cookiecutter.model_lower}}", "{{cookiecutter.model_lower}}Loading"]),
   },
   mounted() {
     this.get{{ cookiecutter.model }}()
   },
   methods: {
     get{{ cookiecutter.model }}() {
-      this.loading = true
-      {{ cookiecutter.app_name }}Api.get{{ cookiecutter.model }}().then((data) => {
-        this.items = data.{{cookiecutter.model_lower}}
-        this.loading = false
-      })
+      this.{{ cookiecutter.app_name }}Store.get{{ cookiecutter.model }}()
     },
-    addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}) {
-      this.loading = true
-      {{ cookiecutter.app_name }}Api.addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}.title).then(({{cookiecutter.model_singular_lower}}) => {
-        this.baseStore.showSnackbar(`New {{cookiecutter.model_singular_lower}} added #${ {{cookiecutter.model_singular_lower}}.id }`)
-        this.get{{ cookiecutter.model }}()
-        this.loading = false
-        console.log("oi")
-      })
+    async addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}}) {
+      const new{{cookiecutter.model_singular}} = await this.{{cookiecutter.app_name}}Store.addNew{{cookiecutter.model_singular}}({{cookiecutter.model_singular_lower}})
+      this.baseStore.showSnackbar(`New {{cookiecutter.model_singular_lower}} added #${ new{{cookiecutter.model_singular}}.id }`)
+      this.get{{ cookiecutter.model }}()
     },
   },
 }

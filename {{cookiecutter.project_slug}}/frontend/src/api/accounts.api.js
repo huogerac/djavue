@@ -2,40 +2,19 @@ import api from "./config.js"
 import apiHelpers from "./helpers.js"
 
 export default {
-  whoami: () => {
-    return new Promise((resolve, reject) => {
-      api
-        .get("/api/accounts/whoami")
-        .then((response) => {
-          return resolve(response.data)
-        })
-        .catch((error) => {
-          return reject(error)
-        })
-    })
+  whoami: async () => {
+    const response = await api.get("/api/accounts/whoami")
+    return response.data
   },
-  login: (username, password) => {
-    return new Promise((resolve, reject) => {
-      api
-        .post("/api/accounts/login", apiHelpers.dataToForm({ username, password }))
-        .then((response) => {
-          return resolve(response.data)
-        })
-        .catch((error) => {
-          return reject(error)
-        })
-    })
+  login: async (username, password) => {
+    const response = await api.post(
+      "/api/accounts/login",
+      apiHelpers.dataToForm({ username, password })
+    )
+    return response.data
   },
-  logout: () => {
-    return new Promise((resolve, reject) => {
-      api
-        .post("/api/accounts/logout")
-        .then((response) => {
-          return resolve(response.data)
-        })
-        .catch((error) => {
-          return reject(error)
-        })
-    })
+  logout: async () => {
+    const response = await api.post("/api/accounts/logout")
+    return response.data
   },
 }

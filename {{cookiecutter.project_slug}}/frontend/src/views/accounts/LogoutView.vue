@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import AccountsApi from "@/api/accounts.api.js"
 import { useBaseStore } from "@/stores/baseStore"
 import { useAccountsStore } from "@/stores/accountsStore"
 
@@ -43,17 +42,14 @@ export default {
     }
   },
   methods: {
-    logout() {
+    async logout() {
       this.loading = true
-      AccountsApi.logout()
-        .then(() => {
-          this.accountsStore.clearLoggedUser()
-          this.baseStore.showSnackbar("Sessão encerrada!", "warning")
-          this.$router.push({ name: "base-home" })
-        })
-        .finally(() => {
-          this.loading = false
-        })
+      const response = await this.accountsStore.logout()
+      this.loading = false
+      if (response) {
+        this.baseStore.showSnackbar("Sessão encerrada!", "warning")
+        this.$router.push({ name: "base-home" })
+      }
     },
   },
 }

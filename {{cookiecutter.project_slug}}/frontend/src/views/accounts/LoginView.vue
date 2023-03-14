@@ -48,7 +48,6 @@
 
 <script>
 import { mapState } from "pinia"
-import AccountsApi from "@/api/accounts.api.js"
 import { useBaseStore } from "@/stores/baseStore"
 import { useAccountsStore } from "@/stores/accountsStore"
 
@@ -60,50 +59,31 @@ export default {
   },
   data: () => {
     return {
-      loading: false,
       valid: false,
       username: "",
       password: "",
-      error: false,
-      visible: false,
     }
   },
   computed: {
     ...mapState(useAccountsStore, ["loggedUser"]),
   },
-  mounted() {
+  async mounted() {
     console.log(this.loggedUser)
-    AccountsApi.whoami().then((response) => {
-      if (response.authenticated) {
-        this.saveLoggedUser(response.user)
-        this.baseStore.showSnackbar("Usuário já logado", "warning")
-        this.show{{ cookiecutter.model }}()
-      }
-    })
+    await this.accountsStore.whoAmI()
+    if (this.loggedUser) {
+      this.baseStore.showSnackbar("Usuário já logado", "warning")
+      this.show{{ cookiecutter.model }}()
+    }
   },
   methods: {
-    login() {
-      this.loading = true
-      AccountsApi.login(this.username, this.password)
-        .then((response) => {
-          if (!response) {
-            this.baseStore.showSnackbar("Usuário ou senha invalida", "danger")
-            return
-          }
-          this.saveLoggedUser(response.user)
-          this.show{{ cookiecutter.model }}()
-        })
-        .finally(() => {
-          this.loading = false
-        })
-    },
-    saveLoggedUser(user) {
-      this.error = !user
-      if (user) {
-        this.accountsStore.setLoggedUser(user)
-        this.visible = false
-        console.log("logged")
+    async login() {
+      const user = await this.accountsStore.login(this.username, this.password)
+      if (!user) {
+        this.baseStore.showSnackbar("Usuário ou senha invalida", "danger")
+        return
       }
+      console.log("logged")
+      this.show{{ cookiecutter.model }}()
     },
     show{{ cookiecutter.model }}() {
       this.$router.push({ name: "{{ cookiecutter.model_lower }}-list" })
