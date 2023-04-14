@@ -1,5 +1,9 @@
 # d-jà vue
 
+> 👉 IMPORTANTE: 🇧🇷 A nova versão com [Django 4, Vue 3 + Vite](https://github.com/evolutio/djavue3) e mais boas práticas estão neste [outro repo aqui](https://github.com/evolutio/djavue3). Confere lá 😎
+
+> 👉 IMPORTANT: 🇬🇧 The new version using [Django 4, Vue 3 + Vite](https://github.com/evolutio/djavue3) and even more good practices can be found in this [other repo here](https://github.com/evolutio/djavue3). Check it out 😎
+
 Um template de projeto completo **full-stack**, **pronto para produção**, com boas práticas e focado na produtividade. Combina um frontend (Vue|Nuxt.JS|Vuetify) e Backend Python (Django API)
 
 ## Por que?
