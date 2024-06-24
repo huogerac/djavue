@@ -31,12 +31,12 @@ Com mais de 20 anos trabalhando como web-developer, eu [Tony Lâmpada](https://g
 
 ## Requisitos
 
-- Node 14 instalado (digite `node -v` para ver a versão) e conseguir rodar o [vue-cli](https://cli.vuejs.org/)
+- Python & Cookiecutter instalados
 - Docker & Docker compose instalados para subir tudo muito rápido e não precisar instalar/configurar infinitas libs/ferramentas diretamente na sua máquina
 
 ## Começando
 
-Este é um template de projetos [Vue](https://cli.vuejs.org/guide/creating-a-project.html) que precisa do [vue-cli](https://cli.vuejs.org/).
+Este é um template de projetos [Cookiecutter](https://github.com/cookiecutter/cookiecutter/)
 
 Neste exemplo, vamos criar o projeto `mytodolist`, mas você pode trocar este nome para qual faz mais sentido para seu produto!
 
@@ -45,10 +45,8 @@ Neste exemplo, vamos criar o projeto `mytodolist`, mas você pode trocar este no
 Vamos precisar criar o projeto e fazer o build de tudo, utilize os comandos abaixo:
 
 ```bash
-# Digite o comando abaixo, caso ainda não tenha o comando vue
-$ npm install -g @vue/cli
 # Crie o novo projeto usando o vue init
-$ vue init huogerac/djavue mytodolist  # vue init evolutio/djavue myproject
+$ cookiecutter huogerac/djavue
 $ cd mytodolist
 # Para criar os containers
 $ docker-compose build
